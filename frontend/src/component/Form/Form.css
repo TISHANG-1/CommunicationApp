@@ -1,0 +1,47 @@
+.email-form {
+    max-width: 25em;
+    margin: 1.25em auto;
+    padding: 1.25em;
+    border: 1px solid #ccc;
+    border-radius: 0.3125em;
+  } 
+.email-form h2 {
+     font-style: normal;
+     font-family: 'Times New Roman', Times, serif;
+     font-size: 2em;
+} 
+
+  
+  .form-group {
+    margin-bottom: 0.9375em;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.3125em;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0.1875em;
+    font-size: 1em;
+    margin-top: 0.1875em;
+  }
+  
+  .button-submit-form {
+    background-color: #0fb4fb;
+    color: white;
+    padding: 0.625em 0.9375em;
+    border: none;
+    border-radius: 0.1875em;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .button-submit-form:hover {
+    background-color: #1500fc;
+  }
+  
