@@ -10,13 +10,12 @@
   .card-container {
     display: flex;
     justify-content: center;
-
     margin-bottom: 2em;
   }
   
   .card {
-    flex: 0 0 48%;
-    padding: 1em;
+    flex: 0 1 50%;
+    padding: 1em; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.655);
     transition: transform 0.3s ease-in-out; 
     margin:  0em 1em 1em 0em

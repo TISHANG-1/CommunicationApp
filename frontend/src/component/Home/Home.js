@@ -18,7 +18,11 @@ const Home = () => {
   const loadRecieve = async()=>{  
       
         navigate("/show-mails" , {state: {display: "recieve"}}); 
+  }  
+  const loadStatistics = async()=>{ 
+        navigate('/statistics')
   }
+
   return (
     <div className="container"> 
      <div className="send-email-container">
@@ -35,6 +39,10 @@ const Home = () => {
         </div>
         <div className="card"  onClick={loadRecieve}>
           <h2>Show All Received Emails</h2>
+          {/* Add content for the second card */}
+        </div>  
+        <div className="card"  onClick={loadStatistics}>
+          <h2>Show Statistics</h2>
           {/* Add content for the second card */}
         </div>
       </div>

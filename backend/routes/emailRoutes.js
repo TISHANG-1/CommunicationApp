@@ -7,6 +7,7 @@ Router.route('/sendEmail').post( isAuthenticatedUser , email.sendEmail ) ;
 Router.route('/sendEmailT').post( isAuthenticatedUser , email.sendEmailT ) ; 
 Router.route('/getSendEmail').get(isAuthenticatedUser , email.getSendEmail) ; 
 Router.route('/getInBounEmail').get(isAuthenticatedUser , email.getInBoundEmail ) ; 
+Router.route('/getStatistics').get(isAuthenticatedUser , email.getStatistics ) ; 
 
 
 

@@ -99,8 +99,7 @@ exports.getSendEmail = catchAsyncErrors(async(req , res , next)=>{
     }) 
 }) ; 
 
-exports.getInBoundEmail = catchAsyncErrors(async(req , res , next)=>{  
-    console.log("here") ; 
+exports.getInBoundEmail = catchAsyncErrors(async(req , res , next)=>{   
     let link  = `https://api.postmarkapp.com/messages/inbound?count=100&offset=0`;   
     const config = {
         headers: { 
@@ -117,4 +116,24 @@ exports.getInBoundEmail = catchAsyncErrors(async(req , res , next)=>{
              error: error
           })
     })
+}) ; 
+ 
+exports.getStatistics = catchAsyncErrors(async(req , res , next)=>{ 
+    let link  = `https://api.postmarkapp.com/stats/outbound?fromdate=2023-01-01&todate=2024-12-1`;   
+    const config = {
+        headers: { 
+             "Accept": "application/json" , 
+             "X-Postmark-Server-Token": `${process.env.POSTMARK_SERVER_API}` 
+        }
+    }
+    await axios.get(link ,   config ).then(async(response)=>{ 
+            res.status(200).send({success: true , 
+            data: response.data}) ; 
+    })
+    .catch((error)=>{ 
+          res.status(401).send({
+             error: error
+          })
+    })  ; 
+
 }) ; 

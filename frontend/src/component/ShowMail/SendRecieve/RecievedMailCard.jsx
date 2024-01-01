@@ -4,8 +4,8 @@ import './MailCard.css';
 
 const ReceivedMailCard = ({ mail }) => {
   const { From, FromFull, Subject, Date, To , MessageID, Status } = mail;
- console.log(FromFull) ; 
- console.log(FromFull) ; 
+  console.log(FromFull);
+
   return (
     <div className="mail-card">
       <div className="mail-header">
@@ -17,9 +17,11 @@ const ReceivedMailCard = ({ mail }) => {
         <div className="recipient-info">
           <span className="recipient-email">To: {To}</span>
         </div> 
-        
-
+      
         <div className="subject"> <b>Subject:</b> {Subject ? Subject : 'No Subject'}</div>
+      </div>
+      <div className="date">
+        Date recieved: {Date}
       </div>
     </div>
   );

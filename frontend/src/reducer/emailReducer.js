@@ -58,3 +58,35 @@ export const getEmailReducer = (state={emails: null}, action)=>{
 
 }
 
+export const getStatisticsReducer = (state = {statistics:null} , action)=>{ 
+     switch(action.type){ 
+         
+        case actionType.GET_STATISTICS_REQUEST:  
+             return {...state , 
+                     error: null , 
+                     loading: true ,         
+            }
+
+        case actionType.GET_STATISTICS_SUCCESS: 
+          return{
+            ...state , 
+            error: null ,
+            loading: false , 
+            statistics: action.payload.data , 
+          }
+
+        case actionType.GET_STATISTICS_ERROR: 
+             return { 
+                ...state, 
+                loading : false , 
+                error: null ,
+             }
+        
+        default : 
+          return {...state , error: null} 
+
+
+
+     }
+     
+}

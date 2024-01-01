@@ -11,6 +11,7 @@ import  EHome  from './component/Home/EHome';
 import Form from './component/Form/Form';
 import EForm from './component/Form/eForm';
 import ShowMail from './component/ShowMail/ShowMail';
+import Statistics from './component/Statistics/Statistics';
 
 
 function App() {  
@@ -36,6 +37,7 @@ function App() {
       { user && <Route path = '/forms' Component = {Form}/> }
       { user && <Route path = '/eforms' Component = {EForm}/> }
       { user && <Route path = '/show-mails' Component = {ShowMail}/> }
+      { user && <Route path = '/statistics' Component = {Statistics}/> }
       </Routes>
     </Router>
   );
