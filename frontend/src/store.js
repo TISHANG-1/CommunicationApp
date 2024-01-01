@@ -2,9 +2,12 @@ import {createStore , combineReducers , applyMiddleware} from "redux"   ;
 import {composeWithDevTools} from "redux-devtools-extension"   ;  
 import { thunk } from "redux-thunk";   
 import { userReducer } from "./reducer/userReducer";
+import { getEmailReducer, sendEmailReducer } from "./reducer/emailReducer";
 
 const reducer =  combineReducers({
-    authData : userReducer,
+    authData : userReducer, 
+    sendEmail: sendEmailReducer, 
+    getEmail: getEmailReducer
 }) ; 
 
 let initialState = { 

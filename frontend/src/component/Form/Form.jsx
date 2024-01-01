@@ -1,26 +1,42 @@
 import React, { useState } from 'react';
 import './Form.css'; // Import the CSS file
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { sendEmailWithTemplate } from '../../action/emailAction';
+import { useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert';
 
 const Form = () => {
-  const location = useLocation();
+  const location = useLocation(); 
+  const dispatch = useDispatch() ;  
+  const navigate = useNavigate() ;  
+  const alert = useAlert() ; 
   const templateAlias = location.state?.template;
   const [receiverEmail, setReceiverEmail] = useState('');
   const [cc, setCC] = useState('');
   const [bcc, setBCC] = useState('');
+  const [recieverName, setReceiverName] = useState('');
+  const [companyName, setcompanyName] = useState('');
+  const [productName, setproductName] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle the form submission logic here, e.g., send an email
     console.log('Receiver Email:', receiverEmail);
     console.log('Cc:', cc);
     console.log('Bcc:', bcc); 
-    const formData  =  { 
+    const formData  =  {  
+         senderEmail : JSON.parse(localStorage.getItem('profile')).result.email, 
          RecevierEmail : receiverEmail, 
          Cc : cc, 
-         Bcc: bcc, 
-         templateAlais: templateAlias,
-    } 
+         Bcc: bcc,  
+         recieverName: recieverName, 
+         companyName: companyName, 
+         productName: productName, 
+         templateAlais: templateAlias, 
+    }   
+    await dispatch(sendEmailWithTemplate(formData)) ;  
+    alert.success('email sent') ; 
+    navigate('/')
 
   };
 
@@ -44,6 +60,7 @@ const Form = () => {
           id="cc"
           value={cc}
           onChange={(e) => setCC(e.target.value)}
+          placeholder='if applicable'
         />
       </div>
       <div className="form-group">
@@ -52,7 +69,38 @@ const Form = () => {
           type="email"
           id="bcc"
           value={bcc}
-          onChange={(e) => setBCC(e.target.value)}
+          onChange={(e) => setBCC(e.target.value)} 
+          placeholder='if applicable'
+        />
+      </div>  
+       <div className="form-group">
+        <label htmlFor="RecieverName">Recievers's Name:</label>
+        <input
+          type="text"
+          id="recieversname"
+          value={recieverName}
+          onChange={(e) => setReceiverName(e.target.value)} 
+          placeholder='if applicable'
+        />
+      </div> 
+      <div className="form-group">
+        <label htmlFor="Company's Name">Sender's Corporation Name:</label>
+        <input
+          type="text"
+          id="companyname"
+          value={companyName}
+          onChange={(e) => setcompanyName(e.target.value)} 
+          placeholder='if applicable'
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="Company's Name"> Product Name:</label>
+        <input
+          type="text"
+          id="productname"
+          value={productName}
+          onChange={(e) => setproductName(e.target.value)} 
+          placeholder='if applicable'
         />
       </div>
       <button className="button-submit-form" type="submit">

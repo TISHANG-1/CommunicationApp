@@ -2,28 +2,30 @@ import * as actionType from "../constants/userConstant" ;
 
 
 
-export const userReducer = ( state = {authData : []} , action) =>{ 
+export const userReducer = ( state = {authData : null} , action) =>{ 
       switch(action.type)
       {   
        case  actionType.USER_LOGIN_GOOGLE_AUTH:  
         console.log(action?.data) ;
         localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
-        return {  
+        return {   
+             ...state, 
              authData: action?.data, 
              loading: false, 
-             ...state, 
         } 
         case actionType.USER_LOGOUT_GOOGLE_AUTH: 
           localStorage.clear() ; 
           return{ 
-             authData:undefined, 
+             ...state ,
+             authData:null, 
              loading: false, 
-             err: null,  
+             err: null,   
+            
           }
         case actionType.USER_AUTH_ERROR: 
           return{ 
+            ...state,
              error: action.data, 
-             ...state,
           }
         default : 
           return {...state ,}

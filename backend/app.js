@@ -49,7 +49,8 @@ app.use(cors({origin: true, credentials: true}));
 const errorMiddleware = require("./middleware/error");
 // app.use('/'  , require('routes/productRoute.js/router')) ;
 // importing the routes in the app  , overall everything we import here is ultimately sent to the server side of the file (server.js) ;
-
+const email  = require('./routes/emailRoutes') ; 
+app.use('/api/v1' , email) ; 
 app.use(errorMiddleware) ;  
 
 module.exports = app

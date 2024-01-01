@@ -61,15 +61,15 @@ function DropdownButton() {
       <Dropdown.Submenu>
         <Dropdown.Item onClick={()=>{ 
                 console.log("clicked");  
-                navigate('/forms', {state : {template: "newFeature"} } );
+                navigate('/forms', {state : {template: "updates"} } );
         }}>
         new feature
         </Dropdown.Item>
         <Dropdown.Item onClick={()=>{ 
                 console.log("clicked");  
-                navigate('/forms' , {state : {template: "passwordChange"} });
+                navigate('/forms' , {state : {template: "passwordConfirmation"} });
         }}>
-        Password Changes
+        Password Confirmation
         </Dropdown.Item> 
 
         <Dropdown.Item onClick={()=>{ 
@@ -89,21 +89,21 @@ function DropdownButton() {
         <Dropdown.Item  
                 onClick={()=>{ 
                 console.log("clicked");  
-                navigate('/forms' );
+                navigate('/forms' ,  {state : {template: "purchase"} });
         }}>
          Confirmation emails on purchases
         </Dropdown.Item> 
         <Dropdown.Item  
                 onClick={()=>{ 
                 console.log("clicked");  
-                navigate('/forms' );
+                navigate('/forms' ,  {state : {template: "feedback"} });
         }}>
           FeedBack
         </Dropdown.Item>
         <Dropdown.Item  
                 onClick={()=>{ 
                 console.log("clicked");  
-                navigate('/forms' );
+                navigate('/forms' , {state : {template: "reminder"} } );
         }}>
           Inactive User Reactivation Email
         </Dropdown.Item>

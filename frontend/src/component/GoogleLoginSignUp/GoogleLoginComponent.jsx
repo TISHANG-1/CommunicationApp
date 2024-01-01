@@ -20,7 +20,8 @@ const GoogleLoginComponent = () => {
   const dispatch = useDispatch(); 
   const loginsuccess = async (res) => {
     const result  = await res?.profileObj ; 
-    const token  =  await res?.tokenId ;   
+    const token  =  await res?.tokenId ;    
+    console.log(result , token) ; 
     try{  
         await dispatch({type: actiontype.USER_LOGIN_GOOGLE_AUTH, data : {result, token} }) ;  
         navigate('/') ; 

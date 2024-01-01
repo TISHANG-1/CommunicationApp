@@ -1,23 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Form.css'; // Import the CSS file
-
+import {useDispatch, useSelector} from "react-redux"
+import { sendEmail } from '../../action/emailAction';
+import {useAlert} from "react-alert" ;
+import {useNavigate} from 'react-router-dom' ; 
 const EForm = () => {
-  
- 
+  const alert = useAlert() ; 
+  const dispatch = useDispatch() ; 
+  const navigate  = useNavigate() ;
   const [receiverEmail, setReceiverEmail] = useState(''); 
   const [subject,  setSubject]  = useState('') ; 
   const [cc, setCC] = useState('');
   const [bcc, setBCC] = useState(''); 
   const [textBody , setTextBody] = useState('') ;  
   const [htmlBody , setHtmlBody] = useState('') ; 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const {email , loading , err} = useSelector(state=>state.sendEmail) ; 
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+    
     // Handle the form submission logic here, e.g., send an email
     console.log('Receiver Email:', receiverEmail);
     console.log('Cc:', cc);
     console.log('Bcc:', bcc); 
-    const formData  =  { 
+    console.log(JSON.parse(localStorage.getItem('profile')).result.email)
+    const formData  =  {  
+         senderEmail : JSON.parse(localStorage.getItem('profile')).result.email, 
          RecevierEmail : receiverEmail, 
          Cc : cc, 
          Bcc: bcc,  
@@ -25,8 +32,15 @@ const EForm = () => {
          textBody: textBody , 
          htmlBody: htmlBody ,  
     } 
-    
-  };
+    await dispatch(sendEmail(formData)) ;  
+    alert.success('email send') ; 
+    navigate('/')
+  }; 
+  useEffect(()=>{
+     if(err){ 
+       alert.error(err) ;
+     }
+   } , [alert])
 
   return (
     <form className="email-form" onSubmit={handleSubmit}>
@@ -40,7 +54,8 @@ const EForm = () => {
           onChange={(e) => setReceiverEmail(e.target.value)}
           required
         />
-      </div>
+      </div> 
+      
       <div className="form-group">
         <label htmlFor="cc">CC:</label>
         <input
@@ -49,7 +64,8 @@ const EForm = () => {
           value={cc}
           onChange={(e) => setCC(e.target.value)}
         />
-      </div>
+      </div> 
+
       <div className="form-group">
         <label htmlFor="bcc">BCC:</label>
         <input
@@ -82,11 +98,11 @@ const EForm = () => {
       </div>   
 
       <div className="form-group">
-        <label htmlFor="TextBody">HTML body:</label>
+        <label htmlFor="HTMLBody">HTML body:</label>
         <input
           type="text"
           id="HTMLBody"
-          value={textBody}
+          value={htmlBody}
           onChange={(e) => setHtmlBody(e.target.value)}
         />
       </div>  
