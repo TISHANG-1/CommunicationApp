@@ -10,6 +10,7 @@ import  Home  from './component/Home/Home';
 import  EHome  from './component/Home/EHome'; 
 import Form from './component/Form/Form';
 import EForm from './component/Form/eForm';
+import ShowMail from './component/ShowMail/ShowMail';
 
 
 function App() {  
@@ -34,6 +35,7 @@ function App() {
       {user && <Route path = '/' Component = {Home}/> }
       { user && <Route path = '/forms' Component = {Form}/> }
       { user && <Route path = '/eforms' Component = {EForm}/> }
+      { user && <Route path = '/show-mails' Component = {ShowMail}/> }
       </Routes>
     </Router>
   );

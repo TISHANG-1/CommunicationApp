@@ -29,7 +29,7 @@ const Navbar = () => {
 
     if (token) {
       const decodedToken = jwtDecode(token); 
-      console.log(token); 
+      // console.log(token); 
 
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }

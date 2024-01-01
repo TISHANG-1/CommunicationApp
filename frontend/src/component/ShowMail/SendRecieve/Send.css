@@ -1,0 +1,6 @@
+.mail-container {
+    display: grid;
+    align-items: center; 
+    justify-content: center;
+    height: 100vh; /* Optionally, set a minimum height to ensure the loader is centered vertically */
+  }

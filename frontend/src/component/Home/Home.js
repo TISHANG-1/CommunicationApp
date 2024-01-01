@@ -3,8 +3,22 @@
 import React from 'react'; 
 import "./Home.css"
 import DropdownButton from '../Dropdown/DropdownButton';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const Home = () => {
+const Home = () => {    
+
+  const navigate =  useNavigate() ; 
+  const dispatch = useDispatch() ; 
+
+  const loadSend = async()=>{   
+       
+        navigate("/show-mails" , {state: {display: "send"}}) ; 
+   }
+  const loadRecieve = async()=>{  
+      
+        navigate("/show-mails" , {state: {display: "recieve"}}); 
+  }
   return (
     <div className="container"> 
      <div className="send-email-container">
@@ -15,11 +29,11 @@ const Home = () => {
       </div>
       {/* First Row: Floating Card Divs */}
       <div className="card-container">
-        <div className="card">
+        <div className="card" onClick={loadSend}>
           <h2>Show All Sent Emails</h2>
           {/* Add content for the first card */}
         </div>
-        <div className="card">
+        <div className="card"  onClick={loadRecieve}>
           <h2>Show All Received Emails</h2>
           {/* Add content for the second card */}
         </div>

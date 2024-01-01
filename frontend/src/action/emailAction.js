@@ -52,31 +52,31 @@ export const sendEmailWithTemplate  = (formData)=> async(dispatch)=>{
 
 
 
-const getAllSendEmail = ()=> async(dispatch)=>{ 
+export const getAllSendEmail = ()=> async(dispatch)=>{ 
      dispatch({type: actionType.GET_EMAIL_REQUEST}); 
      const config = {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`}} ; 
      let link = `http://localhost:4000/api/v1/getSendEmail`   
 
      axios.get(link, config).then(async(res)=>{ 
                dispatch({type: actionType.GET_EMAIL_SUCCESS ,
-               payload: res.data}) ; 
+               payload: res.data.data.Messages}) ; 
      })
-     .then((err)=>{ 
+     .catch((err)=>{ 
         dispatch({type: actionType.GET_EMAIL_ERROR , 
             payload : err });
      }) ; 
 }
 
 
-const getAllRecievedEmail = ()=> async(dispatch)=>{ 
+export const getAllRecievedEmail = ()=> async(dispatch)=>{ 
     dispatch({type: actionType.GET_EMAIL_REQUEST});  
     const config = {headers: {"Authorization" : `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`}} ; 
     
-    let link = `http://localhost:4000/api/v1/getInBoundEmail`   
+    let link = `http://localhost:4000/api/v1/getInBounEmail`   
 
     axios.get(link , config).then(async(res)=>{ 
               dispatch({type: actionType.GET_EMAIL_SUCCESS ,
-              payload: res.data}) ; 
+              payload: res.data.data.InboundMessages}) ; 
     })
     .then((err)=>{ 
        dispatch({type: actionType.GET_EMAIL_ERROR , 

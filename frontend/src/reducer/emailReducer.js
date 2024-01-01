@@ -6,20 +6,20 @@ export const sendEmailReducer = (state ={email:null}, action)=>{
           return{ 
               ...state , 
               loading: true , 
-              err: null , 
+              error: null , 
           }
         case actionType.SEND_EMAIL_SUCCESS:
         return{
             ...state , 
              loading: false , 
              email : action.payload,  
-             err: null , 
+             error: null , 
         }
         case actionType.SEND_EMAIL_ERROR: 
         return{ 
             ...state , 
              loading: false , 
-             err: action.payload,  
+             error: action.payload,  
         }
         default: 
         return {...state } ; 
@@ -46,7 +46,7 @@ export const getEmailReducer = (state={emails: null}, action)=>{
              ...state , 
              loading: false, 
              error: action.payload ,  
-             
+
          }
          default: 
           return{
