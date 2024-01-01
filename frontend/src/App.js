@@ -22,7 +22,7 @@ function App() {
 
   useEffect(()=>{  
       
-            setUser(authData) ;
+            setUser(localStorage.getItem('profile')) ;
      
   } , [authData]) ;
   console.log(user) ;  
