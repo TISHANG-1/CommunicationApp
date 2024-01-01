@@ -1,4 +1,4 @@
-import * as actionType from "../constants/userAction" ;  
+import * as actionType from "../constants/userConstant" ;  
 
 
 

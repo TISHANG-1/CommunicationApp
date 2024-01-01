@@ -1,7 +1,7 @@
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from "gapi-script"; 
 import './handleGoogleLogin.css'   
-import * as actiontype from "../../constants/userAction"
+import * as actiontype from "../../constants/userConstant"
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 

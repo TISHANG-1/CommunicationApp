@@ -7,7 +7,7 @@ import {
 } from 'jwt-decode';
 
 import memories from '../../images/logo.png';
-import * as actionType from '../../constants/userAction.js';
+import * as actionType from '../../constants/userConstant.js';
 import useStyles from './styles';
 
 const Navbar = () => {
